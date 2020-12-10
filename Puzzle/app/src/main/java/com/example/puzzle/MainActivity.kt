@@ -18,10 +18,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.setPuzzle(9)
+        setAdapter(binding)
+    }
+
+    private fun setAdapter(binding : ActivityMainBinding) {
         val adapter = PuzzleAdapter()
         binding.rvPuzzle.adapter = adapter
-        val list = mutableListOf(1,2,3,4,5,6,7,8,9)
-        adapter.setPuzzle(list)
-        adapter.shuffle(list)
     }
 }
