@@ -1,60 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_puzzle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"/>
+    <data>
+        <variable
+            name="puzzleViewModel"
+            type="com.example.puzzle.PuzzleViewModel"/>
+    </data>
 
-    <Button
-        android:id="@+id/btn_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="left"
-        app:layout_constraintTop_toTopOf="@id/btn_up"
-        app:layout_constraintBottom_toBottomOf="@id/btn_down"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_up"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="up"
-        app:layout_constraintTop_toBottomOf="@id/rv_puzzle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_puzzle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3" />
 
-    <Button
-        android:id="@+id/btn_down"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="down"
-        app:layout_constraintTop_toBottomOf="@id/btn_up"
-        app:layout_constraintStart_toStartOf="@id/btn_up"
-        app:layout_constraintEnd_toEndOf="@id/btn_up"/>
+        <Button
+            android:id="@+id/btn_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/left"
+            android:onClick="@{()->puzzleViewModel.move(1)}"
+            app:layout_constraintTop_toTopOf="@id/btn_up"
+            app:layout_constraintBottom_toBottomOf="@id/btn_down"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_up" />
 
-    <Button
-        android:id="@+id/btn_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="right"
-        app:layout_constraintTop_toTopOf="@id/btn_up"
-        app:layout_constraintBottom_toBottomOf="@id/btn_down"
-        app:layout_constraintStart_toEndOf="@id/btn_up"
-        app:layout_constraintEnd_toEndOf="parent"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/up"
+            android:onClick="@{()->puzzleViewModel.move(2)}"
+            app:layout_constraintTop_toBottomOf="@id/rv_puzzle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btn_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/down"
+            android:onClick="@{()->puzzleViewModel.move(3)}"
+            app:layout_constraintTop_toBottomOf="@id/btn_up"
+            app:layout_constraintStart_toStartOf="@id/btn_up"
+            app:layout_constraintEnd_toEndOf="@id/btn_up" />
+
+        <Button
+            android:id="@+id/btn_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/right"
+            android:onClick="@{()->puzzleViewModel.move(4)}"
+            app:layout_constraintTop_toTopOf="@id/btn_up"
+            app:layout_constraintBottom_toBottomOf="@id/btn_down"
+            app:layout_constraintStart_toEndOf="@id/btn_up"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

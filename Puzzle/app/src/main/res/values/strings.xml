@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Puzzle</string>
+    <string name="up">up</string>
+    <string name="down">down</string>
+    <string name="right">right</string>
+    <string name="left">left</string>
 </resources>
