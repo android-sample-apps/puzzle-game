@@ -20,7 +20,7 @@ class PuzzleViewModel : ViewModel() {
         for(i in 1..max)
             temp.add(i)
         temp.shuffle()
-        _puzzle.value = temp
+        _puzzle.value = temp.toList()
     }
 
     fun move(direction : Int) {
@@ -31,6 +31,6 @@ class PuzzleViewModel : ViewModel() {
             3 -> Collections.swap(temp, lastNumber, lastNumber-3) // down
             4 -> Collections.swap(temp, lastNumber, lastNumber-1) // right
         }
-        _puzzle.value = temp
+        _puzzle.value = temp.toList()
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 class PuzzleAdapter : RecyclerView.Adapter<PuzzleAdapter.PuzzleViewHolder>(){
@@ -19,15 +20,11 @@ class PuzzleAdapter : RecyclerView.Adapter<PuzzleAdapter.PuzzleViewHolder>(){
         holder.bind(puzzle[position])
     }
 
-    fun setPuzzle(puzzle : List<Int>){
-        this.puzzle = puzzle
-        notifyDataSetChanged()
-    }
-
-    fun shuffle(puzzle : MutableList<Int>){
-        puzzle.shuffle()
-        this.puzzle = puzzle
-        notifyDataSetChanged()
+    fun setPuzzle(newList : List<Int>) {
+        val diffUtilCallBack = PuzzleDiffUtil(puzzle, newList)
+        val diffResult = DiffUtil.calculateDiff(diffUtilCallBack)
+        this.puzzle = newList
+        diffResult.dispatchUpdatesTo(this)
     }
 
     inner class PuzzleViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
