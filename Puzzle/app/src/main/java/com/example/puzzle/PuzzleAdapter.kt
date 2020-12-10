@@ -1,5 +1,7 @@
 package com.example.puzzle
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +33,8 @@ class PuzzleAdapter : RecyclerView.Adapter<PuzzleAdapter.PuzzleViewHolder>(){
 
     inner class PuzzleViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         fun bind(number : Int) {
-            itemView.findViewById<TextView>(R.id.tv_puzzle).text = number.toString()
+            if(number != puzzle.size) itemView.findViewById<TextView>(R.id.tv_puzzle).text = number.toString()
+            else itemView.setBackgroundColor(Color.parseColor("#ffffff"))
         }
     }
 }
