@@ -14,20 +14,8 @@ class MainActivity : AppCompatActivity() {
         val rvPuzzle = findViewById<RecyclerView>(R.id.rv_puzzle)
         val adapter = PuzzleAdapter()
         rvPuzzle.adapter = adapter
-        rvPuzzle.horizontalDivider()
-        rvPuzzle.verticalDivider()
         val list = mutableListOf(1,2,3,4,5,6,7,8,9)
         adapter.setPuzzle(list)
         adapter.shuffle(list)
-    }
-
-    private fun RecyclerView.horizontalDivider() {
-        val divider = DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL)
-        this.addItemDecoration(divider)
-    }
-
-    private fun RecyclerView.verticalDivider() {
-        val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        this.addItemDecoration(divider)
     }
 }
