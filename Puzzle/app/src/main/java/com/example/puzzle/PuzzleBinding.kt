@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 object PuzzleBinding {
     @BindingAdapter("setPuzzle")
     @JvmStatic
-    fun setPuzzle(recyclerView : RecyclerView, puzzle : List<Int>){
-        if (recyclerView.adapter != null) with(recyclerView.adapter as PuzzleAdapter) { setPuzzle(puzzle) }
+    fun setPuzzle(recyclerView : RecyclerView, puzzle : List<Int>?){
+        if (recyclerView.adapter != null) with(recyclerView.adapter as PuzzleAdapter) { puzzle?.let {setPuzzle(puzzle)} }
     }
 }
