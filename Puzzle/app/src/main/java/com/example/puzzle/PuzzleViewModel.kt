@@ -31,7 +31,7 @@ class PuzzleViewModel : ViewModel() {
         val lastNumber = _puzzle.value!!.indexOf(size*size)
         when (direction) {
             1 -> if(lastNumber%size!=size-1) Collections.swap(temp, lastNumber, lastNumber+1) else _snackBar.value = true // left
-            2 -> if(lastNumber<size*size-1) Collections.swap(temp, lastNumber, lastNumber+size) else _snackBar.value = true // up
+            2 -> if(lastNumber<(size*(size-1))) Collections.swap(temp, lastNumber, lastNumber+size) else _snackBar.value = true // up
             3 -> if(lastNumber>=size) Collections.swap(temp, lastNumber, lastNumber-size) else _snackBar.value = true // down
             4 -> if(lastNumber%size!=0) Collections.swap(temp, lastNumber, lastNumber-1) else _snackBar.value = true // right
         }
