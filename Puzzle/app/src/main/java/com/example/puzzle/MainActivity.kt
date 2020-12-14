@@ -1,5 +1,6 @@
 package com.example.puzzle
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
@@ -41,8 +42,13 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewModel.puzzle.observe(this, Observer { puzzle ->
-            puzzle?.let { if(viewModel.answer()) Snackbar.make(binding.layoutMain, getString(R.string.clear), Snackbar.LENGTH_SHORT).show() }
+            puzzle?.let { viewModel.answer() }
         })
+
+        viewModel.clear.observe(this, Observer {clear ->
+            clear?.let { if(clear) startActivity(Intent(this, FinishActivity::class.java)) }
+        })
+
     }
 
     private fun showDialog(binding : ActivityMainBinding) {

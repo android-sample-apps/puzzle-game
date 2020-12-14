@@ -17,6 +17,10 @@ class PuzzleViewModel : ViewModel() {
     val snackBar : LiveData<Boolean>
         get() = _snackBar
 
+    private val _clear = MutableLiveData(false)
+    val clear : LiveData<Boolean>
+        get() = _clear
+
     private val temp = mutableListOf<Int>()
 
     private val answerPuzzle = mutableListOf<Int>()
@@ -42,5 +46,7 @@ class PuzzleViewModel : ViewModel() {
         _puzzle.value = temp.toList()
     }
 
-    fun answer() = _puzzle.value!! == answerPuzzle
+    fun answer() {
+        _clear.value = _puzzle.value!! == answerPuzzle
+    }
 }
