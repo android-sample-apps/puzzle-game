@@ -27,48 +27,56 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/left"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrow_left_48"
             android:onClick="@{()->puzzleViewModel.move(1)}"
             app:layout_constraintTop_toTopOf="@id/btn_up"
             app:layout_constraintBottom_toBottomOf="@id/btn_down"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_up" />
+            app:layout_constraintEnd_toStartOf="@id/btn_up"
+            tools:ignore="ContentDescription" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/up"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrow_up_48"
             android:onClick="@{()->puzzleViewModel.move(2)}"
             app:layout_constraintTop_toBottomOf="@id/rv_puzzle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_down"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/down"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrow_down_48"
             android:onClick="@{()->puzzleViewModel.move(3)}"
             app:layout_constraintTop_toBottomOf="@id/btn_up"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/btn_up"
-            app:layout_constraintEnd_toEndOf="@id/btn_up" />
+            app:layout_constraintEnd_toEndOf="@id/btn_up"
+            tools:ignore="ContentDescription" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/right"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrow_right_48"
             android:onClick="@{()->puzzleViewModel.move(4)}"
             app:layout_constraintTop_toTopOf="@id/btn_up"
             app:layout_constraintBottom_toBottomOf="@id/btn_down"
             app:layout_constraintStart_toEndOf="@id/btn_up"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
