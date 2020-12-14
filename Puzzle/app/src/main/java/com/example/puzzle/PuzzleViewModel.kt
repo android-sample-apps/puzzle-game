@@ -19,10 +19,14 @@ class PuzzleViewModel : ViewModel() {
 
     private val temp = mutableListOf<Int>()
 
+    private val answerPuzzle = mutableListOf<Int>()
+
     fun setPuzzle(size : Int) {
         this.size = size
-        for(i in 1..size*size)
+        for(i in 1..size*size) {
             temp.add(i)
+            answerPuzzle.add(i)
+        }
         temp.shuffle()
         _puzzle.value = temp.toList()
     }
@@ -37,4 +41,6 @@ class PuzzleViewModel : ViewModel() {
         }
         _puzzle.value = temp.toList()
     }
+
+    fun answer() = _puzzle.value!! == answerPuzzle
 }

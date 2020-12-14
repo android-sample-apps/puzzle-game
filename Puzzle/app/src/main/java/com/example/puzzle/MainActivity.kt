@@ -39,6 +39,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.snackBar.observe(this, Observer { snackBar ->
             snackBar?.let { if(snackBar) Snackbar.make(binding.layoutMain, getString(R.string.wrongDirection), Snackbar.LENGTH_SHORT).show() }
         })
+
+        viewModel.puzzle.observe(this, Observer { puzzle ->
+            puzzle?.let { if(viewModel.answer()) Snackbar.make(binding.layoutMain, getString(R.string.clear), Snackbar.LENGTH_SHORT).show() }
+        })
     }
 
     private fun showDialog(binding : ActivityMainBinding) {
