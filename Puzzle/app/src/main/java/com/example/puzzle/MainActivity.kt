@@ -52,15 +52,20 @@ class MainActivity : AppCompatActivity() {
         val tvThree = layout.findViewById<TextView>(R.id.tv_three)
         val tvFour = layout.findViewById<TextView>(R.id.tv_four)
         val tvFive = layout.findViewById<TextView>(R.id.tv_five)
-        val tvStart = layout.findViewById<TextView>(R.id.tv_start)
 
-        var size = 0
-        tvThree.setOnClickListener { size = 3 }
-        tvFour.setOnClickListener { size = 4 }
-        tvFive.setOnClickListener { size = 5 }
-        tvStart.setOnClickListener {
-            binding.rvPuzzle.layoutManager = GridLayoutManager(this, size)
-            viewModel.setPuzzle(size)
+        tvThree.setOnClickListener {
+            binding.rvPuzzle.layoutManager = GridLayoutManager(this, 3)
+            viewModel.setPuzzle(3)
+            dialog.dismiss()
+        }
+        tvFour.setOnClickListener {
+            binding.rvPuzzle.layoutManager = GridLayoutManager(this, 4)
+            viewModel.setPuzzle(4)
+            dialog.dismiss()
+        }
+        tvFive.setOnClickListener {
+            binding.rvPuzzle.layoutManager = GridLayoutManager(this, 5)
+            viewModel.setPuzzle(5)
             dialog.dismiss()
         }
 
