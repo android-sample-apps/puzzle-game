@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -86,6 +87,7 @@ class MainActivity : AppCompatActivity() {
         binding.rvPuzzle.layoutManager = GridLayoutManager(this, size)
         viewModel.setPuzzle(size)
         dialog.dismiss()
+        binding.chronometer.base = SystemClock.elapsedRealtime()
         binding.chronometer.start()
     }
 }
