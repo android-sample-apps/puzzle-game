@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             setNumber="@{puzzle}"
             setColor="@{size}"
-            android:textSize="40sp"
+            setTextSize="@{size}"
             android:textStyle="bold"
             android:padding="20dp"
             android:gravity="center"

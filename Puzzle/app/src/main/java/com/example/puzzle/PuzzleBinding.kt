@@ -1,6 +1,7 @@
 package com.example.puzzle
 
 import android.graphics.Color
+import android.util.TypedValue
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -21,5 +22,17 @@ object PuzzleBinding {
             textView.setTextColor(Color.WHITE)
         }
         else textView.setBackgroundColor(0)
+    }
+
+    @BindingAdapter("setTextSize")
+    @JvmStatic
+    fun setTextSize(textView : TextView, size : Int) {
+        textView.apply {
+            when (size) {
+                9 -> setTextSize(TypedValue.COMPLEX_UNIT_SP, 44F)
+                16 -> setTextSize(TypedValue.COMPLEX_UNIT_SP, 32F)
+                25 -> setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+            }
+        }
     }
 }
