@@ -59,24 +59,14 @@ class MainActivity : AppCompatActivity() {
 
         val dialog = builder.create()
 
-        val tvThree = layout.findViewById<TextView>(R.id.tv_three)
-        val tvFour = layout.findViewById<TextView>(R.id.tv_four)
-        val tvFive = layout.findViewById<TextView>(R.id.tv_five)
-
-        tvThree.setOnClickListener {
-            binding.rvPuzzle.layoutManager = GridLayoutManager(this, 3)
-            viewModel.setPuzzle(3)
-            dialog.dismiss()
+        layout.findViewById<TextView>(R.id.tv_three).setOnClickListener {
+            sizeSelect(binding, dialog, 3)
         }
-        tvFour.setOnClickListener {
-            binding.rvPuzzle.layoutManager = GridLayoutManager(this, 4)
-            viewModel.setPuzzle(4)
-            dialog.dismiss()
+        layout.findViewById<TextView>(R.id.tv_four).setOnClickListener {
+            sizeSelect(binding, dialog, 4)
         }
-        tvFive.setOnClickListener {
-            binding.rvPuzzle.layoutManager = GridLayoutManager(this, 5)
-            viewModel.setPuzzle(5)
-            dialog.dismiss()
+        layout.findViewById<TextView>(R.id.tv_five).setOnClickListener {
+            sizeSelect(binding, dialog, 5)
         }
 
         val back = ColorDrawable(Color.TRANSPARENT)
@@ -84,5 +74,11 @@ class MainActivity : AppCompatActivity() {
 
         dialog.window?.setBackgroundDrawable(inset)
         dialog.show()
+    }
+
+    private fun sizeSelect(binding : ActivityMainBinding, dialog : android.app.AlertDialog, size : Int) {
+        binding.rvPuzzle.layoutManager = GridLayoutManager(this, size)
+        viewModel.setPuzzle(size)
+        dialog.dismiss()
     }
 }
