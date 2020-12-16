@@ -46,7 +46,12 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewModel.clear.observe(this, Observer {clear ->
-            clear?.let { if(clear) startActivity(Intent(this, FinishActivity::class.java)) }
+            clear?.let {
+                if(clear) {
+                    startActivity(Intent(this, FinishActivity::class.java))
+                    finish()
+                    binding.chronometer.stop()
+                }}
         })
 
     }
@@ -80,5 +85,6 @@ class MainActivity : AppCompatActivity() {
         binding.rvPuzzle.layoutManager = GridLayoutManager(this, size)
         viewModel.setPuzzle(size)
         dialog.dismiss()
+        binding.chronometer.start()
     }
 }
