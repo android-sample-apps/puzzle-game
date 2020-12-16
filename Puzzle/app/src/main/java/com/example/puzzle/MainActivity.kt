@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity() {
         val back = ColorDrawable(Color.TRANSPARENT)
         val inset = InsetDrawable(back, 100)
 
+        dialog.setCancelable(false)
         dialog.window?.setBackgroundDrawable(inset)
         dialog.show()
     }
