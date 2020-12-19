@@ -16,14 +16,13 @@ class PuzzleAdapter : ListAdapter<Int, PuzzleAdapter.PuzzleListViewHolder>(Puzzl
 
     override fun onBindViewHolder(holder: PuzzleListViewHolder, position: Int) = holder.bind(getItem(position))
 
-    inner class PuzzleListViewHolder(itemView : View, size : Int) : RecyclerView.ViewHolder(itemView) {
+    inner class PuzzleListViewHolder(itemView : View, private val size : Int) : RecyclerView.ViewHolder(itemView) {
 
         private val binding : ItemPuzzleBinding = DataBindingUtil.bind(itemView)!!
-        private val puzzleSize = size
 
         fun bind(puzzle : Int) {
             binding.setVariable(BR.puzzle, puzzle)
-            binding.setVariable(BR.size, puzzleSize)
+            binding.setVariable(BR.size, size)
         }
     }
 
