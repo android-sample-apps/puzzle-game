@@ -9,4 +9,7 @@
     <string name="three">3X3</string>
     <string name="four">4X4</string>
     <string name="five">5X5</string>
+    <string name="your_record">Your Record</string>
+    <string name="rank">Rank</string>
+    <string name="again">Again</string>
 </resources>

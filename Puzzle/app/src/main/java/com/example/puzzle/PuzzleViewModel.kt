@@ -21,6 +21,10 @@ class PuzzleViewModel : ViewModel() {
     val clear : LiveData<Boolean>
         get() = _clear
 
+    private val _record = MutableLiveData<String>()
+    val record : LiveData<String>
+        get() = _record
+
     private val temp = mutableListOf<Int>()
 
     private val answerPuzzle = mutableListOf<Int>()
@@ -48,5 +52,9 @@ class PuzzleViewModel : ViewModel() {
 
     fun answer() {
         _clear.value = _puzzle.value!! == answerPuzzle
+    }
+
+    fun setRecord(record : String) {
+        _record.value = record
     }
 }

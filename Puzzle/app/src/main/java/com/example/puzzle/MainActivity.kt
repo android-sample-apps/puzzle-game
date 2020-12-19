@@ -49,9 +49,11 @@ class MainActivity : AppCompatActivity() {
         viewModel.clear.observe(this, Observer {clear ->
             clear?.let {
                 if(clear) {
-                    startActivity(Intent(this, FinishActivity::class.java))
-                    finish()
                     binding.chronometer.stop()
+                    val intent = Intent(this, FinishActivity::class.java)
+                    intent.putExtra("record", binding.chronometer.text.toString())
+                    startActivity(intent)
+                    finish()
                 }}
         })
 
