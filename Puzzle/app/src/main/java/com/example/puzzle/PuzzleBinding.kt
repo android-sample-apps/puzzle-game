@@ -10,7 +10,7 @@ object PuzzleBinding {
     @BindingAdapter("setPuzzle")
     @JvmStatic
     fun setPuzzle(recyclerView : RecyclerView, puzzle : List<Int>?){
-        if (recyclerView.adapter != null) with(recyclerView.adapter as PuzzleAdapter) { puzzle?.let {setPuzzle(puzzle)} }
+        if (recyclerView.adapter != null) with(recyclerView.adapter as PuzzleAdapter) { puzzle?.let {submitList(puzzle)} }
     }
 
     @BindingAdapter("setNumber", "setColor")
