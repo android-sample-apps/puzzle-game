@@ -1,4 +1,4 @@
-package com.example.puzzle
+package com.example.puzzle.adpater
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.puzzle.BR
+import com.example.puzzle.R
 import com.example.puzzle.databinding.ItemPuzzleBinding
 
 class PuzzleAdapter : ListAdapter<Int, PuzzleAdapter.PuzzleListViewHolder>(PuzzleDiffUtil()) {

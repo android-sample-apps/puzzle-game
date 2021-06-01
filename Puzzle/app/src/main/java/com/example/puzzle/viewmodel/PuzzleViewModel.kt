@@ -1,9 +1,9 @@
-package com.example.puzzle
+package com.example.puzzle.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.util.*
+import java.util.Collections
 
 class PuzzleViewModel : ViewModel() {
 

@@ -1,11 +1,14 @@
-package com.example.puzzle
+package com.example.puzzle.clear
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.puzzle.R
 import com.example.puzzle.databinding.ActivityFinishBinding
+import com.example.puzzle.main.MainActivity
+import com.example.puzzle.viewmodel.PuzzleViewModel
 
 class FinishActivity : AppCompatActivity() {
     private val viewModel: PuzzleViewModel by viewModels()

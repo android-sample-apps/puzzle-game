@@ -1,10 +1,11 @@
-package com.example.puzzle
+package com.example.puzzle.binding
 
 import android.graphics.Color
 import android.util.TypedValue
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.puzzle.adpater.PuzzleAdapter
 
 object PuzzleBinding {
     @BindingAdapter("setPuzzle")

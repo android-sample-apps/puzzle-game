@@ -1,4 +1,4 @@
-package com.example.puzzle
+package com.example.puzzle.main
 
 import android.content.Intent
 import android.graphics.Color
@@ -11,9 +11,12 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.puzzle.R
+import com.example.puzzle.adpater.PuzzleAdapter
+import com.example.puzzle.clear.FinishActivity
 import com.example.puzzle.databinding.ActivityMainBinding
+import com.example.puzzle.viewmodel.PuzzleViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -41,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     private fun setObserve(binding: ActivityMainBinding) {
         viewModel.snackBar.observe(
             this,
-            Observer { snackBar ->
+            { snackBar ->
                 snackBar?.let {
                     if (snackBar) Snackbar.make(
                         binding.layoutMain,
@@ -54,14 +57,14 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.puzzle.observe(
             this,
-            Observer { puzzle ->
+            { puzzle ->
                 puzzle?.let { viewModel.answer() }
             }
         )
 
         viewModel.clear.observe(
             this,
-            Observer { clear ->
+            { clear ->
                 clear?.let {
                     if (clear) {
                         binding.chronometer.stop()
