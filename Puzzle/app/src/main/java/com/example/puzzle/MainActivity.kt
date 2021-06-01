@@ -17,12 +17,13 @@ import com.example.puzzle.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
-    private val viewModel : PuzzleViewModel by viewModels()
+    private val viewModel: PuzzleViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding : ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.apply{
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.apply {
             puzzleViewModel = viewModel
             lifecycleOwner = this@MainActivity
         }
@@ -32,34 +33,49 @@ class MainActivity : AppCompatActivity() {
         setObserve(binding)
     }
 
-    private fun setAdapter(binding : ActivityMainBinding) {
+    private fun setAdapter(binding: ActivityMainBinding) {
         val adapter = PuzzleAdapter()
         binding.rvPuzzle.adapter = adapter
     }
 
-    private fun setObserve(binding : ActivityMainBinding) {
-        viewModel.snackBar.observe(this, Observer { snackBar ->
-            snackBar?.let { if(snackBar) Snackbar.make(binding.layoutMain, getString(R.string.wrongDirection), Snackbar.LENGTH_SHORT).show() }
-        })
+    private fun setObserve(binding: ActivityMainBinding) {
+        viewModel.snackBar.observe(
+            this,
+            Observer { snackBar ->
+                snackBar?.let {
+                    if (snackBar) Snackbar.make(
+                        binding.layoutMain,
+                        getString(R.string.wrongDirection),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        )
 
-        viewModel.puzzle.observe(this, Observer { puzzle ->
-            puzzle?.let { viewModel.answer() }
-        })
+        viewModel.puzzle.observe(
+            this,
+            Observer { puzzle ->
+                puzzle?.let { viewModel.answer() }
+            }
+        )
 
-        viewModel.clear.observe(this, Observer {clear ->
-            clear?.let {
-                if(clear) {
-                    binding.chronometer.stop()
-                    val intent = Intent(this, FinishActivity::class.java)
-                    intent.putExtra("record", binding.chronometer.text.toString())
-                    startActivity(intent)
-                    finish()
-                }}
-        })
-
+        viewModel.clear.observe(
+            this,
+            Observer { clear ->
+                clear?.let {
+                    if (clear) {
+                        binding.chronometer.stop()
+                        val intent = Intent(this, FinishActivity::class.java)
+                        intent.putExtra("record", binding.chronometer.text.toString())
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+            }
+        )
     }
 
-    private fun showDialog(binding : ActivityMainBinding) {
+    private fun showDialog(binding: ActivityMainBinding) {
         val builder = android.app.AlertDialog.Builder(this)
         val layout = LayoutInflater.from(this).inflate(R.layout.dialog_size, null)
 
@@ -85,7 +101,11 @@ class MainActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun sizeSelect(binding : ActivityMainBinding, dialog : android.app.AlertDialog, size : Int) {
+    private fun sizeSelect(
+        binding: ActivityMainBinding,
+        dialog: android.app.AlertDialog,
+        size: Int
+    ) {
         binding.rvPuzzle.layoutManager = GridLayoutManager(this, size)
         viewModel.setPuzzle(size)
         dialog.dismiss()
