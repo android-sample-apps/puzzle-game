@@ -7,6 +7,7 @@
     tools:context=".start.StartFragment">
 
     <TextView
+        android:id="@+id/tv_start_new_game"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/langar_regular"

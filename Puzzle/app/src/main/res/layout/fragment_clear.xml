@@ -22,13 +22,13 @@
             android:text="@string/clear"
             android:textColor="@color/black"
             android:textSize="40sp"
-            app:layout_constraintBottom_toTopOf="@id/tv_record_title"
+            app:layout_constraintBottom_toTopOf="@id/tv_clear_record_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_record_title"
+            android:id="@+id/tv_clear_record_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -36,12 +36,12 @@
             android:text="@string/your_record"
             android:textColor="@color/black"
             android:textSize="40sp"
-            app:layout_constraintBottom_toTopOf="@id/tv_record"
+            app:layout_constraintBottom_toTopOf="@id/tv_clear_record"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/tv_record"
+            android:id="@+id/tv_clear_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/langar_regular"
@@ -54,7 +54,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_again"
+            android:id="@+id/tv_clear_again"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/langar_regular"
@@ -62,9 +62,9 @@
             android:textColor="@color/black"
             android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/tv_record_title"
-            app:layout_constraintStart_toStartOf="@id/tv_record_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_record" />
+            app:layout_constraintEnd_toEndOf="@id/tv_clear_record_title"
+            app:layout_constraintStart_toStartOf="@id/tv_clear_record_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_clear_record" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
