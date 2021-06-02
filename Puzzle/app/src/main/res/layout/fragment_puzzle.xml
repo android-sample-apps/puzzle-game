@@ -17,6 +17,18 @@
         android:background="@color/white"
         tools:context=".puzzle.PuzzleFragment">
 
+        <ImageButton
+            android:id="@+id/btn_puzzle_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_back_black_48"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_timer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/layout_timer"
+            tools:ignore="ContentDescription" />
+
         <LinearLayout
             android:id="@+id/layout_timer"
             android:layout_width="wrap_content"
