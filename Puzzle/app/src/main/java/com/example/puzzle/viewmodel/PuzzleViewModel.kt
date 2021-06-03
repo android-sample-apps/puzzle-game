@@ -3,7 +3,7 @@ package com.example.puzzle.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.util.Collections
+import java.util.*
 
 class PuzzleViewModel : ViewModel() {
 
@@ -12,6 +12,10 @@ class PuzzleViewModel : ViewModel() {
     private val _puzzle = MutableLiveData<List<Int>>()
     val puzzle: LiveData<List<Int>>
         get() = _puzzle
+
+    private val _isPause = MutableLiveData(false)
+    val isPause: LiveData<Boolean>
+        get() = _isPause
 
     private val _snackBar = MutableLiveData<Boolean>()
     val snackBar: LiveData<Boolean>
@@ -72,5 +76,9 @@ class PuzzleViewModel : ViewModel() {
 
     fun setRecord(record: String) {
         _record.value = record
+    }
+
+    fun setPause() {
+        _isPause.value = !requireNotNull(_isPause.value)
     }
 }

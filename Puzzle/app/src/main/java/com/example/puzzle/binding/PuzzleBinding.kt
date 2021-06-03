@@ -11,11 +11,13 @@ object PuzzleBinding {
     @BindingAdapter("setPuzzle")
     @JvmStatic
     fun setPuzzle(recyclerView: RecyclerView, puzzle: List<Int>?) {
-        if (recyclerView.adapter != null) with(recyclerView.adapter as PuzzleAdapter) {
-            puzzle?.let {
-                submitList(
-                    puzzle
-                )
+        if (recyclerView.adapter != null) {
+            with(recyclerView.adapter as PuzzleAdapter) {
+                puzzle?.let {
+                    submitList(
+                        puzzle
+                    )
+                }
             }
         }
     }
@@ -23,11 +25,18 @@ object PuzzleBinding {
     @BindingAdapter("setNumber", "setColor")
     @JvmStatic
     fun setNumber(textView: TextView, number: Int?, size: Int?) {
-        if (size != number) {
-            textView.text = number.toString()
-            textView.setBackgroundColor(Color.BLACK)
-            textView.setTextColor(Color.WHITE)
-        } else textView.setBackgroundColor(0)
+        when {
+            size != number -> {
+                textView.apply {
+                    text = number.toString()
+                    setBackgroundColor(Color.BLACK)
+                    setTextColor(Color.WHITE)
+                }
+            }
+            else -> {
+                textView.setBackgroundColor(0)
+            }
+        }
     }
 
     @BindingAdapter("setTextSize")
@@ -40,5 +49,15 @@ object PuzzleBinding {
                 25 -> setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
             }
         }
+    }
+
+    @BindingAdapter("setPauseAlpha")
+    @JvmStatic
+    fun setPauseAlpha(recyclerView: RecyclerView, isPause: Boolean) {
+        when (isPause) {
+            true -> recyclerView.alpha = 0.2f
+            else -> recyclerView.alpha = 1f
+        }
+
     }
 }
