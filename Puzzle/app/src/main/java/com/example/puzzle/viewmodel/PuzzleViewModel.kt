@@ -3,7 +3,7 @@ package com.example.puzzle.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.util.Collections
+import java.util.*
 
 class PuzzleViewModel : ViewModel() {
 
@@ -30,6 +30,7 @@ class PuzzleViewModel : ViewModel() {
 
     fun setPuzzle(size: Int) {
         this.size = size
+        temp.clear()
         for (i in 1..size * size) {
             temp.add(i)
             answerPuzzle.add(i)

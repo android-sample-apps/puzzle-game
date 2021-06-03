@@ -9,7 +9,8 @@ import com.example.puzzle.BR
 import com.example.puzzle.databinding.ItemPuzzleBinding
 import com.example.puzzle.viewmodel.PuzzleViewModel
 
-class PuzzleAdapter(private val puzzleViewModel: PuzzleViewModel) : ListAdapter<Int, PuzzleAdapter.PuzzleListViewHolder>(PuzzleDiffUtil()) {
+class PuzzleAdapter(private val puzzleViewModel: PuzzleViewModel) :
+    ListAdapter<Int, PuzzleAdapter.PuzzleListViewHolder>(PuzzleDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         PuzzleListViewHolder(
