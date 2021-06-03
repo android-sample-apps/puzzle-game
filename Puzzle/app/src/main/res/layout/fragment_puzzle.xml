@@ -38,7 +38,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.4" />
 
-        <Chronometer
+        <com.example.puzzle.util.PauseChronometer
             android:id="@+id/chronometer_puzzle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

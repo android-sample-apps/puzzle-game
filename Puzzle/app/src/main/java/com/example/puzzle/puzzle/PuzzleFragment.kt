@@ -1,7 +1,6 @@
 package com.example.puzzle.puzzle
 
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +28,7 @@ class PuzzleFragment : Fragment() {
         binding.puzzleViewModel = puzzleViewModel
         binding.lifecycleOwner = this@PuzzleFragment
         initRvPuzzle()
-        initChronometer()
+        setPauseObserver()
         setPuzzle()
         setBackToStart()
         return binding.root
@@ -42,9 +41,13 @@ class PuzzleFragment : Fragment() {
         }
     }
 
-    private fun initChronometer() {
-        binding.chronometerPuzzle.base = SystemClock.elapsedRealtime()
-        binding.chronometerPuzzle.start()
+    private fun setPauseObserver() {
+        puzzleViewModel.isPause.observe(viewLifecycleOwner) { isPause ->
+            when (isPause) {
+                true -> binding.chronometerPuzzle.stop()
+                else -> binding.chronometerPuzzle.start()
+            }
+        }
     }
 
     private fun setPuzzle() {
