@@ -87,20 +87,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="28dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/chronometer_puzzle" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.75" />
-
         <ImageView
+            android:id="@+id/img_puzzle_pause"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/btn_black_pause_36"
@@ -110,65 +104,5 @@
             app:layout_constraintStart_toStartOf="@id/rv_puzzle"
             app:layout_constraintTop_toTopOf="@id/rv_puzzle"
             tools:ignore="ContentDescription" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guideline">
-
-            <ImageButton
-                android:id="@+id/btn_left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:onClick="@{()->puzzleViewModel.move(1)}"
-                android:src="@drawable/arrow_left_48"
-                app:layout_constraintBottom_toBottomOf="@id/btn_down"
-                app:layout_constraintEnd_toStartOf="@id/btn_up"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/btn_up"
-                tools:ignore="ContentDescription" />
-
-            <ImageButton
-                android:id="@+id/btn_up"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:onClick="@{()->puzzleViewModel.move(2)}"
-                android:src="@drawable/arrow_up_48"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
-
-            <ImageButton
-                android:id="@+id/btn_down"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@android:color/transparent"
-                android:onClick="@{()->puzzleViewModel.move(3)}"
-                android:src="@drawable/arrow_down_48"
-                app:layout_constraintEnd_toEndOf="@id/btn_up"
-                app:layout_constraintStart_toStartOf="@id/btn_up"
-                app:layout_constraintTop_toBottomOf="@id/btn_up"
-                tools:ignore="ContentDescription" />
-
-            <ImageButton
-                android:id="@+id/btn_right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:onClick="@{()->puzzleViewModel.move(4)}"
-                android:src="@drawable/arrow_right_48"
-                app:layout_constraintBottom_toBottomOf="@id/btn_down"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/btn_up"
-                app:layout_constraintTop_toTopOf="@id/btn_up"
-                tools:ignore="ContentDescription" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
