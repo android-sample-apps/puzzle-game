@@ -38,7 +38,7 @@ class PuzzleFragment : Fragment() {
 
     private fun initRvPuzzle() {
         binding.rvPuzzle.apply {
-            adapter = PuzzleAdapter()
+            adapter = PuzzleAdapter(puzzleViewModel)
             layoutManager = GridLayoutManager(requireContext(), args.size)
         }
     }

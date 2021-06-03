@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.puzzle.BR
 import com.example.puzzle.databinding.ItemPuzzleBinding
+import com.example.puzzle.viewmodel.PuzzleViewModel
 
-class PuzzleAdapter : ListAdapter<Int, PuzzleAdapter.PuzzleListViewHolder>(PuzzleDiffUtil()) {
+class PuzzleAdapter(private val puzzleViewModel: PuzzleViewModel) : ListAdapter<Int, PuzzleAdapter.PuzzleListViewHolder>(PuzzleDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         PuzzleListViewHolder(
@@ -27,6 +28,9 @@ class PuzzleAdapter : ListAdapter<Int, PuzzleAdapter.PuzzleListViewHolder>(Puzzl
         fun bind(puzzle: Int) {
             binding.setVariable(BR.puzzle, puzzle)
             binding.setVariable(BR.size, currentList.size)
+            binding.tvPuzzle.setOnClickListener {
+                puzzleViewModel.move(adapterPosition)
+            }
         }
     }
 

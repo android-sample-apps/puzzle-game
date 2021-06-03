@@ -7,8 +7,6 @@ import java.util.Collections
 
 class PuzzleViewModel : ViewModel() {
 
-    private var size = 0
-
     private val _puzzle = MutableLiveData<List<Int>>()
     val puzzle: LiveData<List<Int>> = _puzzle
 
@@ -18,6 +16,15 @@ class PuzzleViewModel : ViewModel() {
     private val _clear = MutableLiveData(false)
     val clear: LiveData<Boolean> = _clear
 
+    fun clearCheck() {
+        _clear.value = requireNotNull(_puzzle.value) == answerPuzzle
+    }
+
+    fun setPause() {
+        _isPause.value = !requireNotNull(_isPause.value)
+    }
+
+    private var size = 0
     private val temp = mutableListOf<Int>()
     private val answerPuzzle = mutableListOf<Int>()
 
@@ -31,38 +38,21 @@ class PuzzleViewModel : ViewModel() {
         _puzzle.value = temp.toList()
     }
 
-    fun move(direction: Int) {
-        val lastNumber = _puzzle.value!!.indexOf(size * size)
-        when (direction) {
-            1 -> if (lastNumber % size != size - 1) Collections.swap(
-                temp,
-                lastNumber,
-                lastNumber + 1
-            )
-            2 -> if (lastNumber < (size * (size - 1))) Collections.swap(
-                temp,
-                lastNumber,
-                lastNumber + size
-            )
-            3 -> if (lastNumber >= size) Collections.swap(
-                temp,
-                lastNumber,
-                lastNumber - size
-            )
-            4 -> if (lastNumber % size != 0) Collections.swap(
-                temp,
-                lastNumber,
-                lastNumber - 1
-            )
+    fun move(position: Int) {
+        when (val lastNumber = _puzzle.value!!.indexOf(size * size)) {
+            position + 1 -> {
+                Collections.swap(temp, lastNumber, position)
+            }
+            position - 1 -> {
+                Collections.swap(temp, lastNumber, position)
+            }
+            position + size -> {
+                Collections.swap(temp, lastNumber, position)
+            }
+            position - size -> {
+                Collections.swap(temp, lastNumber, position)
+            }
         }
         _puzzle.value = temp.toList()
-    }
-
-    fun clearCheck() {
-        _clear.value = _puzzle.value!! == answerPuzzle
-    }
-
-    fun setPause() {
-        _isPause.value = !requireNotNull(_isPause.value)
     }
 }
