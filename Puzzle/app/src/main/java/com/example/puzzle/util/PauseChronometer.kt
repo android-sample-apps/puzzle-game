@@ -20,4 +20,6 @@ class PauseChronometer : Chronometer {
         pauseTime = SystemClock.elapsedRealtime() - this.base
         super.stop()
     }
+
+    fun stringResult() = this.text.toString()
 }

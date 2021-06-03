@@ -29,6 +29,8 @@ class PuzzleFragment : Fragment() {
         binding.lifecycleOwner = this@PuzzleFragment
         initRvPuzzle()
         setPauseObserver()
+        setClearObserver()
+        setClearCheckObserver()
         setPuzzle()
         setBackToStart()
         return binding.root
@@ -57,6 +59,23 @@ class PuzzleFragment : Fragment() {
     private fun setBackToStart() {
         binding.btnPuzzleBack.setOnClickListener {
             requireView().findNavController().navigate(R.id.action_puzzleFragment_to_startFragment)
+        }
+    }
+
+    private fun setClearObserver() {
+        puzzleViewModel.clear.observe(viewLifecycleOwner) { clear ->
+            if (clear) {
+                requireView().findNavController()
+                    .navigate(PuzzleFragmentDirections.actionPuzzleFragmentToClearFragment(binding.chronometerPuzzle.stringResult()))
+            }
+        }
+    }
+
+    private fun setClearCheckObserver() {
+        puzzleViewModel.puzzle.observe(viewLifecycleOwner) { puzzle ->
+            puzzle?.let {
+                puzzleViewModel.clearCheck()
+            }
         }
     }
 }
