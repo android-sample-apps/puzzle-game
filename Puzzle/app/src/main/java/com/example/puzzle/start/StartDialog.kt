@@ -5,14 +5,13 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
+import com.example.puzzle.R
 import com.example.puzzle.databinding.DialogPuzzleBinding
 import com.example.puzzle.util.autoCleared
-import com.example.puzzle.viewmodel.PuzzleViewModel
 
 class StartDialog : DialogFragment() {
     private var binding by autoCleared<DialogPuzzleBinding>()
-    private val puzzleViewModel by activityViewModels<PuzzleViewModel>()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = DialogPuzzleBinding.inflate(requireActivity().layoutInflater)
@@ -42,23 +41,19 @@ class StartDialog : DialogFragment() {
     private fun setSizeSelect() {
         binding.apply {
             tvDialogThree.setOnClickListener {
-                setPuzzle(3)
+                movePuzzleFragment()
             }
             tvDialogFour.setOnClickListener {
-                setPuzzle(4)
+                movePuzzleFragment()
             }
             tvDialogFive.setOnClickListener {
-                setPuzzle(5)
+                movePuzzleFragment()
             }
         }
     }
 
-    private fun setPuzzle(size: Int) {
-        puzzleViewModel.setPuzzle(size)
-        requireNotNull(dialog).dismiss()
-    }
-
-    companion object {
-        const val TAG = "ONE_BUTTON_DIALOG"
+    private fun movePuzzleFragment() {
+        requireActivity().findNavController(R.id.nav_host_fragment)
+            .navigate(R.id.action_startDialog_to_puzzleFragment)
     }
 }

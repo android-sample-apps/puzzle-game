@@ -11,9 +11,17 @@
         android:label="fragment_start"
         tools:layout="@layout/fragment_start">
         <action
-            android:id="@+id/action_startFragment_to_puzzleFragment"
-            app:destination="@id/puzzleFragment" />
+            android:id="@+id/action_startFragment_to_startDialog"
+            app:destination="@id/startDialog" />
     </fragment>
+    <dialog
+        android:id="@+id/startDialog"
+        android:name="com.example.puzzle.start.StartDialog"
+        android:label="StartDialog">
+        <action
+            android:id="@+id/action_startDialog_to_puzzleFragment"
+            app:destination="@id/puzzleFragment" />
+    </dialog>
     <fragment
         android:id="@+id/puzzleFragment"
         android:name="com.example.puzzle.puzzle.PuzzleFragment"
@@ -25,7 +33,7 @@
         <action
             android:id="@+id/action_puzzleFragment_to_clearFragment"
             app:destination="@id/clearFragment" />
-    </fragment>`
+    </fragment>
     <fragment
         android:id="@+id/clearFragment"
         android:name="com.example.puzzle.clear.ClearFragment"
