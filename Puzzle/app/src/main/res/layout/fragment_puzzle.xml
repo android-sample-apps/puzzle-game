@@ -22,41 +22,60 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_back_black_48"
-            app:layout_constraintBottom_toBottomOf="@+id/layout_timer"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/layout_timer"
-            tools:ignore="ContentDescription" />
-
-        <LinearLayout
-            android:id="@+id/layout_timer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btn_black_back_36"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="UseCompoundDrawables">
+            tools:ignore="ContentDescription" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/clock_36"
-                tools:ignore="ContentDescription" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_chronometer_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4" />
 
-            <Chronometer
-                android:id="@+id/chronometer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginHorizontal="12dp"
-                android:fontFamily="@font/langar_regular"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+        <Chronometer
+            android:id="@+id/chronometer_puzzle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/langar_regular"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_puzzle_back"
+            app:layout_constraintEnd_toEndOf="@id/guideline_chronometer_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_chronometer_start"
+            app:layout_constraintTop_toTopOf="@id/btn_puzzle_back" />
 
-        </LinearLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_chronometer_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <ImageView
+            android:id="@+id/img_puzzle_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_black_clock_36"
+            app:layout_constraintBottom_toBottomOf="@id/chronometer_puzzle"
+            app:layout_constraintEnd_toStartOf="@id/guideline_chronometer_start"
+            app:layout_constraintTop_toTopOf="@id/chronometer_puzzle"
+            tools:ignore="ContentDescription" />
+
+        <ImageButton
+            android:id="@+id/btn_puzzle_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btn_black_pause_36"
+            app:layout_constraintBottom_toBottomOf="@id/chronometer_puzzle"
+            app:layout_constraintStart_toEndOf="@id/guideline_chronometer_end"
+            app:layout_constraintTop_toTopOf="@id/chronometer_puzzle"
+            tools:ignore="ContentDescription" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_puzzle"
@@ -68,7 +87,7 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_timer" />
+            app:layout_constraintTop_toBottomOf="@id/chronometer_puzzle" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
