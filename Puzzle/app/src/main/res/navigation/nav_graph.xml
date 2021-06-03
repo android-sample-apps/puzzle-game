@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_puzzleFragment_to_clearFragment"
             app:destination="@id/clearFragment" />
+        <argument
+            android:name="size"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/clearFragment"

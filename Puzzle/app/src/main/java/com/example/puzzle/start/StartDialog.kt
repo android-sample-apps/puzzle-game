@@ -41,19 +41,19 @@ class StartDialog : DialogFragment() {
     private fun setSizeSelect() {
         binding.apply {
             tvDialogThree.setOnClickListener {
-                movePuzzleFragment()
+                movePuzzleFragment(3)
             }
             tvDialogFour.setOnClickListener {
-                movePuzzleFragment()
+                movePuzzleFragment(4)
             }
             tvDialogFive.setOnClickListener {
-                movePuzzleFragment()
+                movePuzzleFragment(5)
             }
         }
     }
 
-    private fun movePuzzleFragment() {
+    private fun movePuzzleFragment(size: Int) {
         requireActivity().findNavController(R.id.nav_host_fragment)
-            .navigate(R.id.action_startDialog_to_puzzleFragment)
+            .navigate(StartDialogDirections.actionStartDialogToPuzzleFragment(size))
     }
 }
