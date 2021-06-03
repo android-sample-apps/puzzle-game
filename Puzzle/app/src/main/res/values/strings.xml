@@ -1,15 +1,9 @@
 <resources>
     <string name="app_name">Puzzle</string>
-    <string name="up">up</string>
-    <string name="down">down</string>
-    <string name="right">right</string>
-    <string name="left">left</string>
-    <string name="wrongDirection">Wrong Direction</string>
     <string name="clear">Clear</string>
     <string name="three">3 X 3</string>
     <string name="four">4 X 4</string>
     <string name="five">5 X 5</string>
     <string name="your_record">Your Record</string>
-    <string name="rank">Rank</string>
     <string name="again">Again</string>
 </resources>

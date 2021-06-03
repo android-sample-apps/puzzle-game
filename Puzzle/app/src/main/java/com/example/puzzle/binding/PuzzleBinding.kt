@@ -58,6 +58,5 @@ object PuzzleBinding {
             true -> recyclerView.alpha = 0.2f
             else -> recyclerView.alpha = 1f
         }
-
     }
 }

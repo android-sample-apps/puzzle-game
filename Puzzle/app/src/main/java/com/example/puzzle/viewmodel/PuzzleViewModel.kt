@@ -10,27 +10,15 @@ class PuzzleViewModel : ViewModel() {
     private var size = 0
 
     private val _puzzle = MutableLiveData<List<Int>>()
-    val puzzle: LiveData<List<Int>>
-        get() = _puzzle
+    val puzzle: LiveData<List<Int>> = _puzzle
 
     private val _isPause = MutableLiveData(false)
-    val isPause: LiveData<Boolean>
-        get() = _isPause
-
-    private val _snackBar = MutableLiveData<Boolean>()
-    val snackBar: LiveData<Boolean>
-        get() = _snackBar
+    val isPause: LiveData<Boolean> = _isPause
 
     private val _clear = MutableLiveData(false)
-    val clear: LiveData<Boolean>
-        get() = _clear
-
-    private val _record = MutableLiveData<String>()
-    val record: LiveData<String>
-        get() = _record
+    val clear: LiveData<Boolean> = _clear
 
     private val temp = mutableListOf<Int>()
-
     private val answerPuzzle = mutableListOf<Int>()
 
     fun setPuzzle(size: Int) {
@@ -50,32 +38,28 @@ class PuzzleViewModel : ViewModel() {
                 temp,
                 lastNumber,
                 lastNumber + 1
-            ) else _snackBar.value = true // left
+            )
             2 -> if (lastNumber < (size * (size - 1))) Collections.swap(
                 temp,
                 lastNumber,
                 lastNumber + size
-            ) else _snackBar.value = true // up
+            )
             3 -> if (lastNumber >= size) Collections.swap(
                 temp,
                 lastNumber,
                 lastNumber - size
-            ) else _snackBar.value = true // down
+            )
             4 -> if (lastNumber % size != 0) Collections.swap(
                 temp,
                 lastNumber,
                 lastNumber - 1
-            ) else _snackBar.value = true // right
+            )
         }
         _puzzle.value = temp.toList()
     }
 
     fun clearCheck() {
         _clear.value = _puzzle.value!! == answerPuzzle
-    }
-
-    fun setRecord(record: String) {
-        _record.value = record
     }
 
     fun setPause() {
