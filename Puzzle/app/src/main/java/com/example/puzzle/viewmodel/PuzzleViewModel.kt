@@ -3,7 +3,7 @@ package com.example.puzzle.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.util.*
+import java.util.Collections
 
 class PuzzleViewModel : ViewModel() {
 
@@ -70,7 +70,7 @@ class PuzzleViewModel : ViewModel() {
         _puzzle.value = temp.toList()
     }
 
-    fun answer() {
+    fun clearCheck() {
         _clear.value = _puzzle.value!! == answerPuzzle
     }
 

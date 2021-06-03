@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="puzzleViewModel"
-            type="com.example.puzzle.viewmodel.PuzzleViewModel" />
+            name="result"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/langar_regular"
-            android:text="@{puzzleViewModel.record}"
+            android:text="@{result}"
             android:textColor="@color/black"
             android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"
