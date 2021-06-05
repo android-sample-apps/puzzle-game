@@ -3,7 +3,7 @@ package com.example.puzzle.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import java.util.*
+import java.util.Collections
 
 class PuzzleViewModel : ViewModel() {
 
@@ -30,7 +30,6 @@ class PuzzleViewModel : ViewModel() {
 
     fun setPuzzle(size: Int) {
         this.size = size
-        temp.clear()
         for (i in 1..size * size) {
             temp.add(i)
             answerPuzzle.add(i)
@@ -50,5 +49,12 @@ class PuzzleViewModel : ViewModel() {
     private fun swap(lastNumber: Int, position: Int) {
         Collections.swap(temp, lastNumber, position)
         _puzzle.value = temp.toList()
+    }
+
+    fun resetValue() {
+        temp.clear()
+        answerPuzzle.clear()
+        _isPause.value = false
+        _clear.value = false
     }
 }

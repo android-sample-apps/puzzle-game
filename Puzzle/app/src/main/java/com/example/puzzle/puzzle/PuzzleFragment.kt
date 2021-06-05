@@ -78,4 +78,9 @@ class PuzzleFragment : Fragment() {
             }
         }
     }
+
+    override fun onPause() {
+        super.onPause()
+        puzzleViewModel.resetValue()
+    }
 }
