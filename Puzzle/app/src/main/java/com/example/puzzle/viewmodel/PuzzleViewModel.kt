@@ -40,9 +40,16 @@ class PuzzleViewModel : ViewModel() {
 
     fun move(position: Int) {
         when (val lastNumber = _puzzle.value!!.indexOf(size * size)) {
-            position + 1, position - 1, position + size, position - size -> {
-                swap(lastNumber, position)
+            position + 1 -> {
+                if (lastNumber % size != 0) {
+                    swap(lastNumber, position)
+                }
             }
+            position - 1 ->
+                if (lastNumber % size != size - 1) {
+                    swap(lastNumber, position)
+                }
+            position + size, position - size -> swap(lastNumber, position)
         }
     }
 
