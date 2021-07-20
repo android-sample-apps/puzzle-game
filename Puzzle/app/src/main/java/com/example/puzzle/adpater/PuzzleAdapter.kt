@@ -18,19 +18,27 @@ class PuzzleAdapter(private val puzzleViewModel: PuzzleViewModel) :
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            currentList.size,
+            puzzleViewModel
         )
 
     override fun onBindViewHolder(holder: PuzzleListViewHolder, position: Int) =
         holder.bind(getItem(position))
 
-    inner class PuzzleListViewHolder(private val binding: ItemPuzzleBinding) :
+    class PuzzleListViewHolder(
+        private val binding: ItemPuzzleBinding,
+        private val puzzleSize: Int,
+        private val puzzleViewModel: PuzzleViewModel
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(puzzle: Int) {
-            binding.setVariable(BR.puzzle, puzzle)
-            binding.setVariable(BR.size, currentList.size)
-            binding.tvPuzzle.setOnClickListener {
-                puzzleViewModel.move(adapterPosition)
+            with(binding) {
+                setVariable(BR.puzzle, puzzle)
+                setVariable(BR.size, puzzleSize)
+                tvPuzzle.setOnClickListener {
+                    puzzleViewModel.move(adapterPosition)
+                }
             }
         }
     }
