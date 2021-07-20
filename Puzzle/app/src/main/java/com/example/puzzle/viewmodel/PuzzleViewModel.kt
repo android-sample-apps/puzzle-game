@@ -57,11 +57,4 @@ class PuzzleViewModel : ViewModel() {
         Collections.swap(temp, lastNumber, position)
         _puzzle.value = temp.toList()
     }
-
-    fun resetValue() {
-        temp.clear()
-        answerPuzzle.clear()
-        _isPause.value = false
-        _clear.value = false
-    }
 }

@@ -20,7 +20,7 @@ class ClearFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentClearBinding.inflate(layoutInflater)
-        binding.lifecycleOwner = this@ClearFragment
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.result = args.result
         setBackToStart()
         return binding.root

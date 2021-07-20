@@ -28,9 +28,6 @@
         android:label="fragment_puzzle"
         tools:layout="@layout/fragment_puzzle">
         <action
-            android:id="@+id/action_puzzleFragment_to_startFragment"
-            app:popUpTo="@id/startFragment" />
-        <action
             android:id="@+id/action_puzzleFragment_to_clearFragment"
             app:destination="@id/clearFragment" />
         <argument
