@@ -18,11 +18,11 @@ class StartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentStartBinding.inflate(layoutInflater)
-        setStartGame()
+        setTvStartGameClickListener()
         return binding.root
     }
 
-    private fun setStartGame() {
+    private fun setTvStartGameClickListener() {
         binding.tvStartNewGame.setOnClickListener {
             requireView().findNavController()
                 .navigate(R.id.action_startFragment_to_startDialog)
