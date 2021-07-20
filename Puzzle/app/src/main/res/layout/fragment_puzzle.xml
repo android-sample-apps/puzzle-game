@@ -82,11 +82,10 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_puzzle"
-            setPauseAlpha="@{puzzleViewModel.isPause}"
-            setPuzzle="@{puzzleViewModel.puzzle}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
+            android:alpha="@{puzzleViewModel.isPause? 0.2f : 1f}"
             android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

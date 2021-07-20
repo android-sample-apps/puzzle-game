@@ -1,11 +1,12 @@
 package com.example.puzzle.adpater
 
+import android.graphics.Color
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.puzzle.BR
 import com.example.puzzle.databinding.ItemPuzzleBinding
 import com.example.puzzle.viewmodel.PuzzleViewModel
 
@@ -33,12 +34,48 @@ class PuzzleAdapter(private val puzzleViewModel: PuzzleViewModel) :
     ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(puzzle: Int) {
-            with(binding) {
-                setVariable(BR.puzzle, puzzle)
-                setVariable(BR.size, puzzleSize)
-                tvPuzzle.setOnClickListener {
-                    puzzleViewModel.move(adapterPosition)
+            setPuzzleText(puzzle)
+            setPuzzleTextColor(puzzle)
+            setPuzzleTextSize()
+            setPuzzleBackGroundColor(puzzle)
+            setPuzzleClickListener()
+        }
+
+        private fun setPuzzleText(puzzle: Int) {
+            binding.tvPuzzle.text = puzzle.toString()
+        }
+
+        private fun setPuzzleTextColor(puzzle: Int) {
+            with(binding.tvPuzzle) {
+                when {
+                    puzzleSize != puzzle -> setTextColor(Color.WHITE)
+                    else -> setTextColor(Color.TRANSPARENT)
                 }
+            }
+        }
+
+        private fun setPuzzleTextSize() {
+            with(binding.tvPuzzle) {
+                when (puzzleSize) {
+                    9 -> setTextSize(TypedValue.COMPLEX_UNIT_SP, 44F)
+                    16 -> setTextSize(TypedValue.COMPLEX_UNIT_SP, 32F)
+                    25 -> setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+                }
+            }
+        }
+
+        private fun setPuzzleBackGroundColor(puzzle: Int) {
+            with(binding.tvPuzzle) {
+                when {
+                    puzzleSize != puzzle -> setBackgroundColor(Color.BLACK)
+                    else -> setBackgroundColor(Color.TRANSPARENT)
+                }
+            }
+        }
+
+        private fun setPuzzleClickListener() {
+            binding.tvPuzzle.setOnClickListener {
+                puzzleViewModel.move(adapterPosition)
             }
         }
     }

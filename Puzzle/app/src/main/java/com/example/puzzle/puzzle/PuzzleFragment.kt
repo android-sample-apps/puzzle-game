@@ -28,9 +28,9 @@ class PuzzleFragment : Fragment() {
         binding.puzzleViewModel = puzzleViewModel
         binding.lifecycleOwner = this@PuzzleFragment
         initRvPuzzle()
+        setPuzzleObserver()
         setPauseObserver()
         setClearObserver()
-        setClearCheckObserver()
         setPuzzle()
         setBackToStart()
         return binding.root
@@ -71,10 +71,14 @@ class PuzzleFragment : Fragment() {
         }
     }
 
-    private fun setClearCheckObserver() {
-        puzzleViewModel.puzzle.observe(viewLifecycleOwner) { puzzle ->
-            puzzle?.let {
-                puzzleViewModel.clearCheck()
+    private fun setPuzzleObserver() {
+        with(puzzleViewModel) {
+            puzzle.observe(viewLifecycleOwner) { puzzle ->
+                with(binding.rvPuzzle.adapter as PuzzleAdapter) {
+                    submitList(puzzle) {
+                        clearCheck()
+                    }
+                }
             }
         }
     }
